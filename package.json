@@ -2,6 +2,9 @@
   "name": "react-node-boilerplate",
   "version": "1.0.0",
   "description": "Basic React Node Boilerplate",
+  "engines": {
+    "node": ">=7.0.0"
+  },
   "main": "index.js",
   "scripts": {
     "build": "npm run build-server && npm run build-client",
@@ -21,10 +24,18 @@
   },
   "homepage": "https://github.com/zacharymorel/React-Node-Boilerplate#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0"
+    "babel-eslint": "^8.2.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-react": "^7.5.1",
+    "jest": "^23.1.0"
   }
 }
