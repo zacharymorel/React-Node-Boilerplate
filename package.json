@@ -4,6 +4,10 @@
   "description": "Basic React Node Boilerplate",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build-server && npm run build-client",
+    "build-server": "babel src/server --out-dir ./dist",
+    "build-client": "babel src/client --copy-files --out-dir ./dist/public",
+    "start": "node ./dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +22,9 @@
   "homepage": "https://github.com/zacharymorel/React-Node-Boilerplate#readme",
   "dependencies": {
     "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
   }
 }
