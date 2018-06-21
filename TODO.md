@@ -1,7 +1,6 @@
 TODO => 
 - Enable cache busting in Webpack 
   - => DEV done, Prod revisit to use HashedModuleIdsPlugin instead of NamedModulesPlugin. 
-- Enable source maps in webpack
 - Add debug commands to package.json
 - Hot module replacement
 - Auto-restart web server when changes are detected via nodemon

@@ -8,16 +8,23 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
     & CSS files via link tags. 
 */ 
 
-const moduleObj = {
+const clienttModuleObj = {
   rules: [
     { test: /\.js$/, exclude: /node_modules/, loaders: ["babel-loader"] },
     { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] }
   ]
 }
 
+const serverModuleObj = {
+  rules: [
+    { test: /\.js$/, exclude: /node_modules/, loaders: ["babel-loader"] },
+  ]
+}
+
 module.exports = [
   // CLIENT
   {
+    devtool: 'cheap-module-eval-source-map', // Map uglified so when in Dev mode, you can see the root components via  Chrome dev tools/Sources/webpack/*
     entry: {  // The Entry point for Webpack to being it's dependency graph of our files.
       vendors: ['react', 'react-dom'],
       client: './src/client/index.js',
@@ -40,7 +47,7 @@ module.exports = [
         }
       }
     },
-    module: moduleObj, // The object where we specify what rules and Loaders are needed for Webpack's bundling 
+    module: clienttModuleObj, // The object where we specify what rules and Loaders are needed for Webpack's bundling 
     plugins: [
       new HtmlWebPackPlugin({
         template: 'src/client/index.html'
@@ -59,7 +66,7 @@ module.exports = [
       filename: '[name].js',
       path: path.resolve(__dirname, 'dist')
     },
-    module: moduleObj,
+    module: serverModuleObj,
     externals: [nodeExternals()] // externals configuration option provides a way of excluding dependencies from the output bundles.
   }
 ]
