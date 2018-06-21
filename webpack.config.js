@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
 const HtmlWebPackPlugin = require('html-webpack-plugin') 
 /*
@@ -21,19 +22,33 @@ module.exports = [
   // CLIENT
   {
     entry: {  // The Entry point for Webpack to being it's dependency graph of our files.
-      'client': './src/client/index.js',
+      vendors: ['react', 'react-dom'],
+      client: './src/client/index.js',
     },
     target: 'web', // Target specifies what environment webpack should compile for, eg, Node || Web
     mode: 'development', // Providing the mode configuration option tells webpack to use its built-in optimizations accordingly.
     output: { // output configuration options tells webpack how to write the compiled files to disk. NOTE: only 1 output per webpack modular bundler.
-      filename: '[name].js',
+      filename: '[name].[chunkhash].js', // chunkhash useful for caching
       path: path.resolve(__dirname, 'dist/public')
+    },
+    optimization: {
+      splitChunks: { // Caches all dev 3rd party lib so requests from the client won't call a full server
+        cacheGroups: {
+          vendor: {
+            test: 'vendors',
+            name: "vendors", 
+            chunks: "initial", 
+            enforce: true
+          }
+        }
+      }
     },
     module: moduleObj, // The object where we specify what rules and Loaders are needed for Webpack's bundling 
     plugins: [
       new HtmlWebPackPlugin({
         template: 'src/client/index.html'
-      })
+      }),
+      new webpack.NamedModulesPlugin(), // Makes sure there is no unnecessary rebuild of Vendor package. 
     ]
   },
   // SERVER

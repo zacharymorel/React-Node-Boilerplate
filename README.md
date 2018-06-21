@@ -8,6 +8,5 @@ This is my react-node-boilerplate
 
 ## Development Process
 - npm run clean
-- npm install
 - npm run build
 - npm start
