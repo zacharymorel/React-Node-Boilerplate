@@ -10,11 +10,8 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 const moduleObj = {
   rules: [
-    {
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loaders: ["babel-loader"], // Loaders allow you to pre-process files as you import or “load” them. 
-    }
+    { test: /\.js$/, exclude: /node_modules/, loaders: ["babel-loader"] },
+    { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] }
   ]
 }
 

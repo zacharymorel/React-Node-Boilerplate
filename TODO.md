@@ -1,7 +1,6 @@
 TODO => 
 - Enable cache busting in Webpack 
   - => DEV done, Prod revisit to use HashedModuleIdsPlugin instead of NamedModulesPlugin. 
-- CSS file bundling using css-loader in webpack
 - Enable source maps in webpack
 - Add debug commands to package.json
 - Hot module replacement
