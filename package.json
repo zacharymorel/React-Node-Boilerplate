@@ -7,11 +7,11 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "npm run build-server && npm run build-client",
-    "build-server": "babel src/server --out-dir ./dist",
-    "build-client": "babel src/client --copy-files --out-dir ./dist/public",
-    "start": "node ./dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "build-babel": "npm run build-babel-server && npm run build-babel-client",
+    "build-babel-server": "babel src/server --out-dir ./dist",
+    "build-babel-client": "babel src/client --copy-files --out-dir ./dist/public",
+    "start": "node ./dist/server.js"
   },
   "repository": {
     "type": "git",
@@ -31,11 +31,14 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "eslint": "^4.19.1",
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-react": "^7.5.1",
-    "jest": "^23.1.0"
+    "jest": "^23.1.0",
+    "webpack": "^4.12.0",
+    "webpack-node-externals": "^1.7.2"
   }
 }
